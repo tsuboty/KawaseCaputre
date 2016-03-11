@@ -1,1 +1,2 @@
-.price.csv
+*.gitignore
+*.csv
