@@ -11,6 +11,7 @@ import collections
 class CrawClass:
 	currencies = ["USDJPY_top_bid","EURJPY_top_bid","GBPJPY_top_bid","AUDJPY_top_bid","NZDJPY_top_bid"]
 	title = "TIME,USDJPY,EURJPY,GBPJPY,AUDJPY,NZDJPY"
+
 	def __init__(self):
 		# web source
 		html = urllib2.urlopen("http://info.finance.yahoo.co.jp/fx")
@@ -68,7 +69,7 @@ class CrawClass:
 def thread_write():
 	c = CrawClass()
 	c.write_log()
-	t = threading.Timer(5,thread_write)
+	t = threading.Timer(interval,thread_write)
 	t.start()
 	bits = c.getBids()
 
@@ -77,7 +78,7 @@ def thread_write():
 	del c
 
 
-
+interval = 6
 thread_write()
 
 
